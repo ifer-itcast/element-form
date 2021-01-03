@@ -3,12 +3,18 @@
     <!-- 卡片组件 -->
     <el-card class="login-card">
       <!-- 登录表单 -->
-      <el-form style="margin-top: 50px">
+      <el-form style="margin-top: 50px" :model="loginForm">
         <el-form-item>
-          <el-input placeholder="请输入手机号"></el-input>
+          <el-input
+            v-model="loginForm.mobile"
+            placeholder="请输入手机号"
+          ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input placeholder="请输入密码"></el-input>
+          <el-input
+            v-model="loginForm.password"
+            placeholder="请输入密码"
+          ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%">登录</el-button>
@@ -21,6 +27,15 @@
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      // 表单数据
+      loginForm: {
+        mobile: '',
+        password: '',
+      },
+    };
+  },
 };
 </script>
 
