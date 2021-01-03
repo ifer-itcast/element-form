@@ -3,7 +3,7 @@
     <!-- 卡片组件 -->
     <el-card class="login-card">
       <!-- 登录表单 -->
-      <el-form style="margin-top: 50px" :model="loginForm" :rules="loginRules">
+      <el-form style="margin-top: 50px" :model="loginForm" :rules="loginRules" ref="loginRef">
         <el-form-item prop="mobile">
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
@@ -11,7 +11,7 @@
           <el-input v-model="loginForm.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width: 100%">登录</el-button>
+          <el-button type="primary" style="width: 100%" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -45,6 +45,32 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    async login() {
+      /* this.$refs.loginRef.validate((isOk) => {
+        if (isOk) {
+          // 校验通过
+        } else {
+          // 校验失败
+        }
+      }); */
+      /* this.$refs.loginRef
+        .validate()
+        .then(() => {
+          // 成功
+          console.log('success');
+        })
+        .catch(() => {
+          // 失败
+          console.log('error');
+        }); */
+      const r = await this.$refs.loginRef
+        .validate()
+        .then((r) => r)
+        .catch((e) => e);
+      console.log(r);
+    },
   },
 };
 </script>
